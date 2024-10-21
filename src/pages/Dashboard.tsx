@@ -248,11 +248,12 @@ const Dashboard: React.FC = () => {
                 <div className="modal-overlay">
                     <div className="modal">
                         <h2>PDFプレビュー</h2>
-                        <iframe src={pdfUrl} width="100%" height="500px" />
+                        <iframe src={pdfUrl} width="100%" height="500px"
+                                title={`PDF Preview for Report ${currentReportId}`}/>
                         <div className="modal-actions">
                             <button onClick={() => window.open(pdfUrl, '_blank')}><FaExternalLinkAlt/> 新しいタブで開く
                             </button>
-                            <a href={pdfUrl} download={`report_${currentReportId}.pdf`}><FaFilePdf /> ダウンロード</a>
+                            <a href={pdfUrl} download={`report_${currentReportId}.pdf`}><FaFilePdf/> ダウンロード</a>
                         </div>
                         <button onClick={() => setShowPdfModal(false)}>閉じる</button>
                     </div>
