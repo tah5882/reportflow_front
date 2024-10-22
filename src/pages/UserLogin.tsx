@@ -19,7 +19,7 @@ const UserLogin: React.FC = () => {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const response = await axios.get('https://report-api.tah5882.dev:8000/api/check-session', { withCredentials: true });
+                const response = await axios.get('/api/check-session', { withCredentials: true });
                 if (response.data.isAuthenticated) {
                     navigate('/dashboard');
                 }
@@ -38,7 +38,7 @@ const UserLogin: React.FC = () => {
         console.log('Submitting login form:', { username, password });
         try {
             const response = await axios.post<LoginResponse>(
-                'https://report-api.tah5882.dev:8000/api/login',
+                '/api/login',
                 { username, password },
                 { withCredentials: true }
             );

@@ -1,6 +1,7 @@
 {
   "name": "reportflow_front",
   "version": "0.1.0",
+  "proxy": "/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -51,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/http-proxy-middleware": "^0.19.3",
+    "http-proxy-middleware": "^3.0.3"
   }
 }

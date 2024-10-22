@@ -25,7 +25,7 @@ const ChangePassword: React.FC = () => {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                await axios.get('https://report-api.tah5882.dev:8000/api/check-session', { withCredentials: true });
+                await axios.get('/api/check-session', { withCredentials: true });
             } catch (err) {
                 navigate('/');
             }
@@ -45,7 +45,7 @@ const ChangePassword: React.FC = () => {
 
         try {
             const response = await axios.post<ChangePasswordResponse>(
-                'https://report-api.tah5882.dev:8000/api/change-password',
+                '/api/change-password',
                 { currentPassword, newPassword },
                 { withCredentials: true }
             );

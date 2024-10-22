@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
 
     const fetchReports = async () => {
         try {
-            const response = await axios.get<Report[]>('https://report-api.tah5882.dev:8000/api/reports', { withCredentials: true });
+            const response = await axios.get<Report[]>('/api/reports', { withCredentials: true });
             setReports(response.data);
         } catch (error) {
             console.error('レポートの取得に失敗しました:', error);
@@ -51,7 +51,7 @@ const Dashboard: React.FC = () => {
 
     const handleShareReport = async (reportId: number) => {
         try {
-            const response = await axios.post(`https://report-api.tah5882.dev:8000/api/reports/${reportId}/share`, {}, { withCredentials: true });
+            const response = await axios.post(`/api/reports/${reportId}/share`, {}, { withCredentials: true });
             setShareLink(response.data.shareLink);
             setCurrentReportId(reportId);
             setShowShareModal(true);
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
 
     const handleGeneratePDF = async (reportId: number) => {
         try {
-            const response = await axios.get(`https://report-api.tah5882.dev:8000/api/reports/${reportId}/generate-pdf`, {
+            const response = await axios.get(`/api/reports/${reportId}/generate-pdf`, {
                 withCredentials: true
             });
             const url = response.data.pdfUrl;
@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
         }
 
         try {
-            await axios.delete(`https://report-api.tah5882.dev:8000/api/reports/${reportId}`, { withCredentials: true });
+            await axios.delete(`/api/reports/${reportId}`, { withCredentials: true });
             await fetchReports();
         } catch (error) {
             console.error('レポートの削除に失敗しました:', error);
@@ -98,9 +98,9 @@ const Dashboard: React.FC = () => {
 
         try {
             if (currentReport) {
-                await axios.put(`https://report-api.tah5882.dev:8000/api/reports/${currentReport.id}`, reportData, { withCredentials: true });
+                await axios.put(`/api/reports/${currentReport.id}`, reportData, { withCredentials: true });
             } else {
-                await axios.post('https://report-api.tah5882.dev:8000/api/reports', reportData, { withCredentials: true });
+                await axios.post('/api/reports', reportData, { withCredentials: true });
             }
             setShowModal(false);
             await fetchReports();
